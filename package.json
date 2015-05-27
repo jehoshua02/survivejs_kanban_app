@@ -4,7 +4,7 @@
   "description": "Kanban App from [Survive JS Book](http://survivejs.com/)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack"
   },
   "author": "Joshua Stoutenburg <jehoshua02@gmail.com>",
   "license": "MIT",
