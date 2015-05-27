@@ -7,5 +7,8 @@ module.exports = {
     path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js'
   },
-  plugins: [new HtmlWebpackPlugin()]
+  plugins: [new HtmlWebpackPlugin({
+    title: 'SurviveJS Kanban App',
+    template: path.resolve(__dirname, 'app/index.html')
+  })]
 };
