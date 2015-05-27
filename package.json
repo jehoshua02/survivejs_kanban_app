@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "serve": "open http://localhost:3000; serve build/"
+    "watch": "webpack -w",
+    "serve": "open http://localhost:3000; npm run watch & serve build/"
   },
   "author": "Joshua Stoutenburg <jehoshua02@gmail.com>",
   "license": "MIT",
