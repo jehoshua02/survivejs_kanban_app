@@ -7,7 +7,8 @@
   "scripts": {
     "build": "TARGET=build webpack",
     "serve": "npm run open; TARGET=dev node server.js",
-    "open": "open http://localhost:8080/webpack-dev-server/"
+    "open": "open http://localhost:8080/webpack-dev-server/",
+    "lint": "eslint . --ext .js --ext .jsx"
   },
   "author": "Joshua Stoutenburg <jehoshua02@gmail.com>",
   "license": "MIT",
@@ -23,7 +24,10 @@
   },
   "homepage": "https://github.com/jehoshua02/survivejs_kanban_app",
   "devDependencies": {
+    "babel-eslint": "^3.1.9",
     "css-loader": "^0.14.3",
+    "eslint": "^0.21.2",
+    "eslint-plugin-react": "^2.3.0",
     "html-webpack-plugin": "^1.4.0",
     "node-libs-browser": "^0.5.2",
     "style-loader": "^0.12.3",
