@@ -24,7 +24,6 @@ var common = {
       { test: /\.jsx?$/, loader: 'eslint-loader', include: path.join(ROOT_PATH, 'app' )}
     ],
     loaders: [
-      { test: /\.jsx$/, loader: 'babel', include: path.join(ROOT_PATH, 'app') },
       { test: /\.css$/, loaders: ['style', 'css'] }
     ]
   },
@@ -43,7 +42,12 @@ var config;
 
 if (TARGET.CURRENT === TARGET.BUILD) {
   config = merge(common, {
-    devtool: 'source-map',
+    devtool: 'sourcemap',
+    module: {
+      loaders: [
+        { test: /\.jsx$/, loader: 'babel', include: path.join(ROOT_PATH, 'app') }
+      ]
+    },
     plugins: [
       new webpack.optimize.UglifyJsPlugin({
         compress: { warnings: false },
@@ -74,8 +78,13 @@ if (TARGET.CURRENT === TARGET.DEV) {
     },
     entry: [
       'webpack-dev-server/client?http://' + HOST + ':' + PORT,
-      'webpack/hot/dev-server'
+      'webpack/hot/only-dev-server'
     ],
+    module: {
+      loaders: [
+        { test: /\.jsx$/, loaders: ['react-hot', 'babel'], include: path.join(ROOT_PATH, 'app') },
+      ]
+    },
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NoErrorsPlugin(),
