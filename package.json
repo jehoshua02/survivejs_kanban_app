@@ -7,5 +7,16 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Joshua Stoutenburg <jehoshua02@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jehoshua02/survivejs_kanban_app.git"
+  },
+  "keywords": [
+    "survivejs"
+  ],
+  "bugs": {
+    "url": "https://github.com/jehoshua02/survivejs_kanban_app/issues"
+  },
+  "homepage": "https://github.com/jehoshua02/survivejs_kanban_app"
 }
