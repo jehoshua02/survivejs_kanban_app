@@ -1,5 +1,7 @@
+var webpack = require('webpack');
 var path = require('path');
-var extend = require('extend').bind({}, {});
+var merge = require('webpack-config-merger');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var TARGET = {
   CURRENT: process.env.TARGET,
@@ -10,7 +12,9 @@ var TARGET = {
 var ROOT_PATH = path.resolve(__dirname);
 
 var common = {
-  entry: path.resolve(ROOT_PATH, 'app/main.js'),
+  entry: [
+    path.resolve(ROOT_PATH, 'app/main.js')
+  ],
   output: {
     path: path.resolve(ROOT_PATH, 'build'),
     filename: 'bundle.js'
@@ -19,18 +23,36 @@ var common = {
     loaders: [
       { test: /\.css$/, loaders: ['style', 'css'] }
     ]
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'SurviveJS Kanban App',
+      template: path.join(ROOT_PATH, 'app/index.tpl')
+    })
+  ]
 };
 
 var config;
 
 if (TARGET.CURRENT === TARGET.BUILD) {
-  config = extend(common, {});
+  config = merge(common, {});
 }
 
 if (TARGET.CURRENT === TARGET.DEV) {
-  config = extend(common, {
-    entry: ['webpack/hot/dev-server']
+  var IP = '0.0.0.0';
+  var PORT = '8080';
+
+  config = merge(common, {
+    ip: IP,
+    port: PORT,
+    entry: [
+      'webpack-dev-server/client?http://' + [IP, PORT].join(':'),
+      'webpack/hot/dev-server'
+    ],
+    plugins: [
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.NoErrorsPlugin()
+    ]
   });
 }
 
