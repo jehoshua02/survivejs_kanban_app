@@ -1,0 +1,11 @@
+{
+  "name": "survivejs_kanban_app",
+  "version": "1.0.0",
+  "description": "Kanban App from [Survive JS Book](http://survivejs.com/)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Joshua Stoutenburg <jehoshua02@gmail.com>",
+  "license": "MIT"
+}
