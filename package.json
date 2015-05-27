@@ -1,6 +1,7 @@
 {
   "name": "survivejs_kanban_app",
   "version": "1.0.0",
+  "private": true,
   "description": "Kanban App from [Survive JS Book](http://survivejs.com/)",
   "main": "index.js",
   "scripts": {
