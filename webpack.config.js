@@ -13,16 +13,23 @@ var ROOT_PATH = path.resolve(__dirname);
 
 var common = {
   entry: [
-    path.resolve(ROOT_PATH, 'app/main.js')
+    path.resolve(ROOT_PATH, 'app/main.jsx')
   ],
   output: {
     path: path.resolve(ROOT_PATH, 'build'),
     filename: 'bundle.js'
   },
   module: {
+    preLoaders: [
+      { test: /\.jsx?$/, loader: 'eslint-loader', include: path.join(ROOT_PATH, 'app' )}
+    ],
     loaders: [
+      { test: /\.jsx$/, loader: 'babel', include: path.join(ROOT_PATH, 'app') },
       { test: /\.css$/, loaders: ['style', 'css'] }
     ]
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -36,7 +43,17 @@ var config;
 
 if (TARGET.CURRENT === TARGET.BUILD) {
   config = merge(common, {
-    devtool: 'source-map'
+    devtool: 'source-map',
+    plugins: [
+      new webpack.optimize.UglifyJsPlugin({
+        compress: { warnings: false },
+      }),
+      new webpack.DefinePlugin({
+        'process.env': {
+          'NODE_ENV': JSON.stringify('production')
+        }
+      })
+    ]
   });
 }
 
