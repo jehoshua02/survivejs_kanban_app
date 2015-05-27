@@ -5,7 +5,8 @@
   "description": "Kanban App from [Survive JS Book](http://survivejs.com/)",
   "main": "index.js",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "serve": "open http://localhost:3000; serve build/"
   },
   "author": "Joshua Stoutenburg <jehoshua02@gmail.com>",
   "license": "MIT",
@@ -23,6 +24,7 @@
   "devDependencies": {
     "html-webpack-plugin": "^1.4.0",
     "node-libs-browser": "^0.5.2",
+    "serve": "^1.4.0",
     "webpack": "^1.9.10"
   }
 }
