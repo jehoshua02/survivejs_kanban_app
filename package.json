@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "build": "TARGET=build webpack",
-    "start": "npm run open; TARGET=dev webpack-dev-server --devtool eval --progress --colors --hot --content-base build",
+    "serve": "npm run open; TARGET=dev node server.js",
     "open": "open http://localhost:8080/webpack-dev-server/"
   },
   "author": "Joshua Stoutenburg <jehoshua02@gmail.com>",

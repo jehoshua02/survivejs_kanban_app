@@ -35,23 +35,33 @@ var common = {
 var config;
 
 if (TARGET.CURRENT === TARGET.BUILD) {
-  config = merge(common, {});
+  config = merge(common, {
+    devtool: 'source-map'
+  });
 }
 
 if (TARGET.CURRENT === TARGET.DEV) {
-  var IP = '0.0.0.0';
+  var HOST = '0.0.0.0';
   var PORT = '8080';
 
   config = merge(common, {
-    ip: IP,
-    port: PORT,
+    devtool: 'source-map',
+    devServer: {
+      host: HOST,
+      port: PORT,
+      contentBase: common.output.path,
+      hot: true,
+      inline: true,
+      stats: { colors: true },
+      historyApiFallback: true
+    },
     entry: [
-      'webpack-dev-server/client?http://' + [IP, PORT].join(':'),
+      'webpack-dev-server/client?http://' + HOST + ':' + PORT,
       'webpack/hot/dev-server'
     ],
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
-      new webpack.NoErrorsPlugin()
+      new webpack.NoErrorsPlugin(),
     ]
   });
 }
