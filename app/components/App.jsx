@@ -18,14 +18,28 @@ export default class App extends React.Component {
     var notes = this.state.notes;
     return (
       <div>
-        <button onClick={p.addItem.bind(this)}>+</button>
-        <Notes items={notes} />
+        <button onClick={this.addItem.bind(this)}>+</button>
+        <Notes
+          items={notes}
+          onEdit={this.itemEdited.bind(this)} />
       </div>
     );
   }
-}
 
-var p = {
+  itemEdited(i, task) {
+    var notes = this.state.notes;
+
+    if (task) {
+      notes[i].task = task;
+    } else {
+      notes = notes.slice(0, i).concat(notes.slice(i + 1));
+    }
+
+    this.setState({
+      notes: notes
+    });
+  }
+
   addItem() {
     this.setState({
       notes: this.state.notes.concat([{
@@ -33,4 +47,4 @@ var p = {
       }])
     });
   }
-};
+}
