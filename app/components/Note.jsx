@@ -1,7 +1,10 @@
 import React from 'react';
 
 export default class Note extends React.Component {
-  constructor(props) {
+  constructor(props: {
+    task: string;
+    onEdit: Function
+  }) {
     super(props);
 
     this.state = {

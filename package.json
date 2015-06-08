@@ -31,6 +31,8 @@
     "eslint": "^0.21.2",
     "eslint-loader": "^0.11.2",
     "eslint-plugin-react": "^2.3.0",
+    "flowcheck": "^0.2.6",
+    "flowcheck-loader": "^1.0.0",
     "html-webpack-plugin": "^1.4.0",
     "node-libs-browser": "^0.5.2",
     "react-hot-loader": "^1.2.7",
